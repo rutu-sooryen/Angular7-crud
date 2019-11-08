@@ -1,0 +1,36 @@
+.login-container {
+  padding: 10px;
+  flex-direction: column;
+  text-align: center;
+  width: 100%; 
+}
+.login-form {
+  width: 600px;
+  margin: 0 auto;
+  background-color: lightgray;
+  border-radius: 20px;
+  padding: 10px;
+}
+.display-lable {
+  padding-right: 15px;
+}
+::ng-deep  {
+  .mat-form-field-wrapper {
+    width: 300px;
+  }
+
+}
+
+.login-button {
+  margin-top: 20px;
+  width: 150px;
+  height: 40px;
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #3f51b5;
+  color: #ffffff;
+  border: 0;
+  box-shadow: 0px 3px 5px 0px #ee120775;   
+  border-radius: 25px;
+  padding: 5px;
+}
