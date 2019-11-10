@@ -1,70 +1,40 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { catchError, tap, map } from 'rxjs/operators';
-import { Product } from '../module/products';
+import data from '../includes/product-details.json';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  const httpOptions = {
-    headers: new HttpHeaders({'Content-Type': 'application/json'})
-  };
-  const apiUrl = "/api/v1/products";
-
-  private handleError<T> (operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-  
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
-  
-      // Let the app keep running by returning an empty result.
-      return of(result as T);
-    };
-  }
-
   constructor(private http: HttpClient) { }
 
+  products: string[];
+  checkAuthentication() {
+      var userInfo = {
+      username:"rutu", 
+      password:"rutu@123"
+    }
+    return userInfo;
+  }
 
-  getProducts (): Observable<Product[]> {
-    return this.http.get<Product[]>(this.apiUrl)
-      .pipe(
-        tap(heroes => console.log('fetched products')),
-        catchError(this.handleError('getProducts', []))
-      );
+  getProducts (){
+    return data;
   }
   
-  getProduct(id: number): Observable<Product> {
-    const url = `${this.apiUrl}/${id}`;
-    return this.http.get<Product>(url).pipe(
-      tap(_ => console.log(`fetched product id=${id}`)),
-      catchError(this.handleError<Product>(`getProduct id=${id}`))
-    );
+  getProduct(id: number) {
+    
   }
   
-  addProduct (product): Observable<Product> {
-    return this.http.post<Product>(this.apiUrl, product, this.httpOptions).pipe(
-      tap((product: Product) => console.log(`added product w/ id=${product.id}`)),
-      catchError(this.handleError<Product>('addProduct'))
-    );
+  addProduct (product) {
+    
   }
   
-  updateProduct (id, product): Observable<any> {
-    const url = `${this.apiUrl}/${id}`;
-    return this.http.put(url, product, this.httpOptions).pipe(
-      tap(_ => console.log(`updated product id=${id}`)),
-      catchError(this.handleError<any>('updateProduct'))
-    );
+  updateProduct (id, product) {
+    
   }
   
-  deleteProduct (id): Observable<Product> {
-    const url = `${this.apiUrl}/${id}`;
-  
-    return this.http.delete<Product>(url, this.httpOptions).pipe(
-      tap(_ => console.log(`deleted product id=${id}`)),
-      catchError(this.handleError<Product>('deleteProduct'))
-    );
+  deleteProduct (id) {
+    
   }
 }

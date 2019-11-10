@@ -30,16 +30,16 @@ isLoadingResults = false;
   }
 
   onFormSubmit(form:NgForm) {
-    this.isLoadingResults = true;
-    this.api.addProduct(form)
-      .subscribe(res => {
-          let id = res['_id'];
-          this.isLoadingResults = false;
-          this.router.navigate(['/product-details', id]);
-        }, (err) => {
-          console.log(err);
-          this.isLoadingResults = false;
-        });
+    // this.isLoadingResults = true;
+    // this.api.addProduct(form)
+    //   .subscribe(res => {
+    //       let id = res['_id'];
+    //       this.isLoadingResults = false;
+    //       this.router.navigate(['/product-details', id]);
+    //     }, (err) => {
+    //       console.log(err);
+    //       this.isLoadingResults = false;
+    //     });
   }
 
 }

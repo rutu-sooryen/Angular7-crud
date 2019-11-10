@@ -29,7 +29,7 @@ export class ProductEditComponent implements OnInit {
   }
 
   getProduct(id) {
-    this.api.getProduct(id).subscribe(data => {
+    this.api.getProducts()(data => {
       this.id = data.id;
       this.productForm.setValue({
         prod_name: data.prod_name,
@@ -41,16 +41,16 @@ export class ProductEditComponent implements OnInit {
 
   onFormSubmit(form:NgForm) {
     this.isLoadingResults = true;
-    this.api.updateProduct(this.id, form)
-      .subscribe(res => {
-          let id = res['id'];
-          this.isLoadingResults = false;
-          this.router.navigate(['/product-details', id]);
-        }, (err) => {
-          console.log(err);
-          this.isLoadingResults = false;
-        }
-      );
+    // this.api.updateProduct(this.id, form)
+    //   .subscribe(res => {
+    //       let id = res['id'];
+    //       this.isLoadingResults = false;
+    //       this.router.navigate(['/product-details', id]);
+    //     }, (err) => {
+    //       console.log(err);
+    //       this.isLoadingResults = false;
+    //     }
+    //   );
   }
 
   productDetails() {

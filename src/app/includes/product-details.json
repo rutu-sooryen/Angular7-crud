@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "name": "Tv",
+        "weight": "1.0079",
+        "price": "50000"
+    }, 
+    {
+        "id": 2,
+        "name": "Refrigerators",
+        "weight": "4.0026",
+        "price": "20000"
+    }, 
+    {
+        "id": 3,
+        "name": "Microwave oven",
+        "weight": "6.941",
+        "price": "10000"
+    }, 
+    {
+        "id": 4,
+        "name": "Air conditioner",
+        "weight": "7.050",
+        "price": "30000"
+    }, 
+    {
+        "id": 5,
+        "name": "Vacuum cleaner",
+        "weight": "3.811",
+        "price": "12000"
+    }, 
+    {
+        "id": 6,
+        "name": "Washing machine",
+        "weight": "9.0122",
+        "price": "60000"
+    }
+]
