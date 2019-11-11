@@ -14,41 +14,31 @@ import { SelectionModel } from '@angular/cdk/collections';
 
 export class ProductsComponent implements OnInit {
 
-  productDataModel: ProductDataModel[];
-  dataSource: any;
+  constructor(private router: Router, public apiService: ApiService) { }
+
   displayedColumns = ['position', 'name', 'weight', 'price', 'edit', 'delete'];
-  selection : any;
-  numSelected : any;
-
-  constructor(private router: Router,public apiService: ApiService) { }
-
+  dataSource : any;
+  selection: any;
+  jsonData = [];
 
   ngOnInit() {
     var response = this.apiService.getProducts();
-    this.productDataModel = response;
-    this.dataSource = new MatTableDataSource(this.productDataModel);
+    this.jsonData = Object.assign(response);
+    this.dataSource = new MatTableDataSource<ProductDataModel>(this.jsonData);
     this.selection = new SelectionModel<ProductDataModel>(true, []);
-    this.numSelected = this.selection.selected.length;
-
   }
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  deleteProduct(pid: number) {
-    this.productDataModel.forEach(item => {
-      let index: number = this.productDataModel.findIndex(d => d === item);
-      console.log(this.productDataModel.findIndex(d => d === item));
-      this.productDataModel.splice(index,-1);
-      this.dataSource = new MatTableDataSource<ProductDataModel>(this.productDataModel);
+  removeSelectedRows() {
+    this.selection.selected.forEach(item => {
+      let index: number = this.jsonData.findIndex(d => d === item);
+      console.log(this.jsonData.findIndex(d => d === item));
+      this.jsonData.splice(index, 1)
+      this.dataSource = new MatTableDataSource<ProductDataModel>(this.jsonData);
     });
     this.selection = new SelectionModel<ProductDataModel>(true, []);
-
   }
 
-  editProduct (id: number) {
-    this.router.navigate([`product-edit/id:`]);
-
-
-  }
 }

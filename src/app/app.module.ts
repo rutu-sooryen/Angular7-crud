@@ -9,7 +9,7 @@ import { ProductEditComponent } from './product-edit/product-edit.component';
 import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatSelectModule, MatTableModule, MatPaginatorModule, MatProgressSpinnerModule, MatSortModule, MatIconModule, MatButtonModule, MatCardModule } from '@angular/material';
+import { MatSelectModule, MatTableModule, MatPaginatorModule, MatProgressSpinnerModule, MatSortModule, MatIconModule, MatButtonModule, MatCardModule, MatCheckboxModule } from '@angular/material';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -48,7 +48,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatIconModule,
     MatButtonModule,
     MatCardModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
