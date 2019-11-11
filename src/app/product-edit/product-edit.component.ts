@@ -13,11 +13,11 @@ import { FormControl, FormGroup, Validators, NgForm } from '@angular/forms';
 export class ProductEditComponent implements OnInit {
 
   productForm: FormGroup;
-  productDataModel :ProductDataModel;
+  productDataModel: ProductDataModel;
   id: string = '';
 
-  constructor(private router: Router, private route: ActivatedRoute, private api: ApiService,public cookieService: CookieService,
-    ) { }
+  constructor(private router: Router, private route: ActivatedRoute, private api: ApiService, public cookieService: CookieService,
+  ) { }
 
   ngOnInit() {
     this.productForm = new FormGroup({
@@ -26,9 +26,8 @@ export class ProductEditComponent implements OnInit {
       prod_price: new FormControl('', [Validators.required]),
     });
 
-    const productdetail = this.cookieService.get('data'); 
+    const productdetail = this.cookieService.get('data');
     var obj = JSON.parse(productdetail);
-    console.log(obj);
     this.productForm.controls.prod_name.setValue(obj.name);
     this.productForm.controls.prod_weight.setValue(obj.weight);
     this.productForm.controls.prod_price.setValue(obj.price);
@@ -37,8 +36,7 @@ export class ProductEditComponent implements OnInit {
   productDetails() {
     this.router.navigate(['/product-details', this.id]);
   }
-  onFormSubmit(form:NgForm) {
-    
+  onFormSubmit(form: NgForm) {
     alert('Your data saved successfully!');
     this.productForm.reset();
   }

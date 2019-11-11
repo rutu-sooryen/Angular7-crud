@@ -10,15 +10,15 @@ export class ApiService {
 
   products: string[];
   checkAuthentication() {
-      var userInfo = {
-      username:"rutu", 
-      password:"rutu@123"
+    var userInfo = {
+      username: "rutu",
+      password: "rutu@123"
     }
     return userInfo;
   }
 
-  getProductDetails(){
-   return this.http.get('assets/product-details.json');
+  getProductDetails() {
+    return this.http.get('assets/product-details.json');
   }
 
 }

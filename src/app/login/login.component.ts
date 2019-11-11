@@ -12,28 +12,23 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
 
-  constructor(private router: Router,public apiService : ApiService) { }
+  constructor(private router: Router, public apiService: ApiService) { }
 
   ngOnInit() {
     this.loginForm = new FormGroup({
       username: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required]),
     });
-      
-    }
-
+  }
   
   onSubmit() {
-    var response = this.apiService.checkAuthentication() 
-    if(response.username == this.loginForm.value.username && response.password == this.loginForm.value.password)     
-    {
+    var response = this.apiService.checkAuthentication()
+    if (response.username == this.loginForm.value.username && response.password == this.loginForm.value.password) {
       this.router.navigate(['/products']);
-    } 
-    else{
+    }
+    else {
       alert("Please Enter valid username and password");
       this.router.navigate(['/login']);
     }
   }
-
-
 }

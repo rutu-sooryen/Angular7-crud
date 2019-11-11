@@ -1,34 +1,34 @@
 <div class="example-container mat-elevation-z8">
-    <div class="button-row">
-      <h1> Product details</h1>
-    </div>
-    <mat-card class="example-card">
-      <form [formGroup]="productForm" (ngSubmit)="onFormSubmit(productForm.value)">
-              
-        <mat-form-field class="input-full-width" appearance="outline">
-            <mat-label>Product Name</mat-label>
-          <input matInput autocomplete="off" formControlName="prod_name">
-          <mat-error>
-            <span *ngIf="!productForm.valid && productForm.touched">Please enter Product Name</span>
-          </mat-error>
-        </mat-form-field>
-        <mat-form-field class="input-full-width" appearance="outline">
-            <mat-label>Product Weight</mat-label>
-          <input matInput autocomplete="off" formControlName="prod_weight">
-          <mat-error>
-            <span *ngIf="!productForm.valid && productForm.touched">Please enter Product Weight</span>
-          </mat-error>
-        </mat-form-field>
-        <mat-form-field class="input-full-width" appearance="outline">
-            <mat-label>Product Price</mat-label>
-          <input matInput autocomplete="off" formControlName="prod_price">
-          <mat-error>
-            <span *ngIf="!productForm.valid && productForm.touched">Please enter Product Price</span>
-          </mat-error>
-        </mat-form-field>
-        <div class="button-row">
-            <button type="submit" class="save-button" mat-button [disabled]="!productForm.valid">save</button>
-        </div>
-      </form>
-    </mat-card>
+  <div class="button-row">
+    <h1> Product details</h1>
   </div>
+  <mat-card class="example-card">
+    <form [formGroup]="productForm" (ngSubmit)="onFormSubmit(productForm.value)">
+
+      <mat-form-field class="input-full-width" appearance="outline">
+        <mat-label>Product Name</mat-label>
+        <input matInput autocomplete="off" formControlName="prod_name">
+        <mat-error>
+          <span *ngIf="!productForm.valid && productForm.touched">Please enter Product Name</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="input-full-width" appearance="outline">
+        <mat-label>Product Weight</mat-label>
+        <input matInput autocomplete="off" formControlName="prod_weight">
+        <mat-error>
+          <span *ngIf="!productForm.valid && productForm.touched">Please enter Product Weight</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="input-full-width" appearance="outline">
+        <mat-label>Product Price</mat-label>
+        <input matInput autocomplete="off" formControlName="prod_price">
+        <mat-error>
+          <span *ngIf="!productForm.valid && productForm.touched">Please enter Product Price</span>
+        </mat-error>
+      </mat-form-field>
+      <div class="button-row">
+        <button type="submit" class="save-button" mat-button [disabled]="!productForm.valid">save</button>
+      </div>
+    </form>
+  </mat-card>
+</div>
