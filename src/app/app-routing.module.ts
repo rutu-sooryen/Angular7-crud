@@ -28,7 +28,7 @@ const routes: Routes = [
     data: { title: 'Add Product' }
   },
   {
-    path: 'product-edit/id:',
+    path: 'product-edit/:id',
     component: ProductEditComponent,
     data: { title: 'Edit Product' }
   },

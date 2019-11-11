@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import data from '../includes/product-details.json';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -18,23 +17,8 @@ export class ApiService {
     return userInfo;
   }
 
-  getProducts (){
-    return data;
+  getProductDetails(){
+   return this.http.get('assets/product-details.json');
   }
-  
-  getProduct(id: number) {
-    
-  }
-  
-  addProduct (product) {
-    
-  }
-  
-  updateProduct (id, product) {
-    
-  }
-  
-  deleteProduct (id) {
-    
-  }
+
 }

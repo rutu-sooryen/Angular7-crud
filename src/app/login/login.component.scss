@@ -7,8 +7,8 @@
 .login-form {
   width: 600px;
   margin: 0 auto;
-  background-color: lavender;
-  border-radius: 20px;
+  background: rgb(238,174,202);
+  background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);    border-radius: 20px;
   padding: 10px;
 }
 .display-lable {
@@ -18,7 +18,6 @@
   .mat-form-field-wrapper {
     width: 300px;
   }
-
 }
 
 .login-button {
@@ -26,10 +25,11 @@
   width: 150px;
   font-size: 20px;
   cursor: pointer;
-  background-color: #3f51b5;
-  color: #ffffff;
+  background-color: cornsilk;
+  font-weight: bold;
   border: 0;
   box-shadow: 0px 3px 5px 0px #ee120775;   
   border-radius: 25px;
   padding: 5px;
+
 }

@@ -4,22 +4,26 @@
     </div>
     <mat-card class="example-card">
       <form [formGroup]="productForm" (ngSubmit)="onFormSubmit(productForm.value)">
-        <mat-form-field class="example-full-width" appearance="outline">
-          <input matInput placeholder="Product Name" formControlName="prod_name">
+              
+        <mat-form-field class="input-full-width" appearance="outline">
+            <mat-label>Product Name</mat-label>
+          <input matInput autocomplete="off" formControlName="prod_name">
           <mat-error>
-            <span *ngIf="!productForm.get('prod_name').valid && productForm.get('prod_name').touched">Please enter Product Name</span>
+            <span *ngIf="!productForm.valid && productForm.touched">Please enter Product Name</span>
           </mat-error>
         </mat-form-field>
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Product Description" formControlName="prod_desc">
+        <mat-form-field class="input-full-width" appearance="outline">
+            <mat-label>Product Weight</mat-label>
+          <input matInput autocomplete="off" formControlName="prod_weight">
           <mat-error>
-            <span *ngIf="!productForm.get('prod_desc').valid && productForm.get('prod_desc').touched">Please enter Product Description</span>
+            <span *ngIf="!productForm.valid && productForm.touched">Please enter Product Weight</span>
           </mat-error>
         </mat-form-field>
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Product Price" formControlName="prod_price">
+        <mat-form-field class="input-full-width" appearance="outline">
+            <mat-label>Product Price</mat-label>
+          <input matInput autocomplete="off" formControlName="prod_price">
           <mat-error>
-            <span *ngIf="!productForm.get('prod_price').valid && productForm.get('prod_price').touched">Please enter Product Price</span>
+            <span *ngIf="!productForm.valid && productForm.touched">Please enter Product Price</span>
           </mat-error>
         </mat-form-field>
         <div class="button-row">

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { ApiService } from '../services/api.service';
-import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { ProductDataModel } from '../model/product-data.model';
+import { FormControl, FormGroup, Validators, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-product-edit',
@@ -11,50 +13,34 @@ import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Valida
 export class ProductEditComponent implements OnInit {
 
   productForm: FormGroup;
+  productDataModel :ProductDataModel;
   id: string = '';
-  prod_name: string = '';
-  prod_desc: string = '';
-  prod_price: number = null;
-  isLoadingResults = false;
 
-  constructor(private router: Router, private route: ActivatedRoute, private api: ApiService, private formBuilder: FormBuilder) { }
+  constructor(private router: Router, private route: ActivatedRoute, private api: ApiService,public cookieService: CookieService,
+    ) { }
 
   ngOnInit() {
-    this.getProduct(this.route.snapshot.params['id']);
-  this.productForm = this.formBuilder.group({
-    'prod_name' : [null, Validators.required],
-    'prod_desc' : [null, Validators.required],
-    'prod_price' : [null, Validators.required]
-  });
-  }
-
-  getProduct(id) {
-    this.api.getProducts()(data => {
-      this.id = data.id;
-      this.productForm.setValue({
-        prod_name: data.prod_name,
-        prod_desc: data.prod_desc,
-        prod_price: data.prod_price
-      });
+    this.productForm = new FormGroup({
+      prod_name: new FormControl('', [Validators.required]),
+      prod_weight: new FormControl('', [Validators.required]),
+      prod_price: new FormControl('', [Validators.required]),
     });
-  }
 
-  onFormSubmit(form:NgForm) {
-    this.isLoadingResults = true;
-    // this.api.updateProduct(this.id, form)
-    //   .subscribe(res => {
-    //       let id = res['id'];
-    //       this.isLoadingResults = false;
-    //       this.router.navigate(['/product-details', id]);
-    //     }, (err) => {
-    //       console.log(err);
-    //       this.isLoadingResults = false;
-    //     }
-    //   );
+    const productdetail = this.cookieService.get('data'); 
+    var obj = JSON.parse(productdetail);
+    console.log(obj);
+    this.productForm.controls.prod_name.setValue(obj.name);
+    this.productForm.controls.prod_weight.setValue(obj.weight);
+    this.productForm.controls.prod_price.setValue(obj.price);
   }
 
   productDetails() {
     this.router.navigate(['/product-details', this.id]);
+  }
+  onFormSubmit(form:NgForm) {
+    
+    alert('Your data saved successfully!');
+    this.productForm.reset();
   }
 
 }
