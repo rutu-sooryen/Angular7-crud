@@ -1,43 +1,46 @@
-<div class="product-list">
-  <mat-form-field>
-    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter your data">
-  </mat-form-field>
+<div class="product-container mat-elevation-z8" id="content" #content>
+  <div>
+    <h2> List of products</h2>
+  </div>
+  <div class="product-list">
+    
+    <table mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
 
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-    <ng-container matColumnDef="position">
-      <th mat-header-cell *matHeaderCellDef> No. </th>
-      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-    </ng-container>
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
 
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-    </ng-container>
+      <ng-container matColumnDef="weight">
+        <th mat-header-cell *matHeaderCellDef> Weight </th>
+        <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+      </ng-container>
 
-    <ng-container matColumnDef="weight">
-      <th mat-header-cell *matHeaderCellDef> Weight </th>
-      <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
-    </ng-container>
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef> Price </th>
+        <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+      </ng-container>
 
-    <ng-container matColumnDef="price">
-      <th mat-header-cell *matHeaderCellDef> price </th>
-      <td mat-cell *matCellDef="let element"> {{element.price}} </td>
-    </ng-container>
+      <ng-container matColumnDef="edit">
+        <th mat-header-cell *matHeaderCellDef> Edit </th>
+        <td mat-cell *matCellDef="let element"> <button class="login-button" mat-raised-button
+            (click)="editProduct(element.id)">Edit </button></td>
+      </ng-container>
 
-    <ng-container matColumnDef="edit">
-      <th mat-header-cell *matHeaderCellDef> Edit </th>
-      <td mat-cell *matCellDef="let element"> <button class="login-button" mat-raised-button
-          (click)="editProduct(element.id)">Edit </button></td>
-    </ng-container>
+      <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef> Delete </th>
+        <td mat-cell *matCellDef="let element"> <button class="login-button" mat-raised-button
+            (click)="removeSelectedRows()">Delete </button> </td>
+      </ng-container>
 
-    <ng-container matColumnDef="delete">
-      <th mat-header-cell *matHeaderCellDef> Delete </th>
-      <td mat-cell *matCellDef="let element"> <button class="login-button" mat-raised-button
-          (click)="removeSelectedRows()">Delete </button> </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)">
-    </tr>
-  </table>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)">
+      </tr>
+    </table>
+  </div>
+    <button class="pdf-button" mat-raised-button (click)="exportPDF()"> Export to PDF</button>
 </div>

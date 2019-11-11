@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { ApiService } from '../services/api.service';
 import { ProductDataModel } from '../model/product-data.model';
 import { Router } from '@angular/router';
 import { SelectionModel } from '@angular/cdk/collections';
 import { CookieService } from 'ngx-cookie-service';
+import * as jsPDF from 'jspdf';
 
 @Component({
   selector: 'app-products',
@@ -13,6 +14,8 @@ import { CookieService } from 'ngx-cookie-service';
 })
 
 export class ProductsComponent implements OnInit {
+
+  @ViewChild('content') content: ElementRef;
 
   constructor(private router: Router, public apiService: ApiService, public cookieService: CookieService) { }
 
@@ -28,10 +31,6 @@ export class ProductsComponent implements OnInit {
       this.dataSource = new MatTableDataSource<ProductDataModel>(data);
       this.selection = new SelectionModel<ProductDataModel>(true, []);
     });
-
-  }
-  applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   removeSelectedRows() {
@@ -50,5 +49,21 @@ export class ProductsComponent implements OnInit {
     this.cookieService.set('data', JSON.stringify(this.productDataModel));
     this.router.navigate(['product-edit', pid]);
   }
+  exportPDF() {
+    var doc = new jsPDF();
 
+    const specialElementHandlers = {
+      '#editor': function (element, renderer) {
+        return true;
+      }
+    };
+
+    const content = this.content.nativeElement;
+
+    doc.fromHTML(content.innerHTML, 15, 15, {
+      width: 190,
+      'elementHandlers': specialElementHandlers
+    });
+    doc.save('HTMLtoPDF-Angular.pdf');
+  }
 }

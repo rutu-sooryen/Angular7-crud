@@ -14,7 +14,6 @@ export class ProductEditComponent implements OnInit {
 
   productForm: FormGroup;
   productDataModel: ProductDataModel;
-  id: string = '';
 
   constructor(private router: Router, private route: ActivatedRoute, private api: ApiService, public cookieService: CookieService,
   ) { }
@@ -33,12 +32,8 @@ export class ProductEditComponent implements OnInit {
     this.productForm.controls.prod_price.setValue(obj.price);
   }
 
-  productDetails() {
-    this.router.navigate(['/product-details', this.id]);
-  }
   onFormSubmit(form: NgForm) {
     alert('Your data saved successfully!');
     this.productForm.reset();
   }
-
 }

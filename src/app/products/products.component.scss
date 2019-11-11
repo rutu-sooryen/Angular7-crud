@@ -1,8 +1,14 @@
 // /* Structure */
-.product-list {
-  max-width: 700px;
+.product-container {
+  position: relative;
+  text-align: center;
+  padding: 15px;
+  border-radius: 20px;
+  max-width: 50%;
   margin: auto;
+  margin-top: 40px;
 }
+
 .mat-form-field {
   font-size: 14px;
   width: 100%;
@@ -11,7 +17,11 @@
   width: 100%;
   background-color: lavender;
 }
-
+th.mat-header-cell {
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+}
 .login-button {
   cursor: pointer;
   background-color: #3f51b5;
@@ -20,6 +30,16 @@
   box-shadow: 0px 3px 5px 0px #ee120775;
   border-radius: 25px;
 }
+.pdf-button {
+  margin-top: 20px;
+  cursor: pointer;
+  background-color: green;
+  color: #ffffff;
+  border: 0;
+  box-shadow: 0px 3px 5px 0px #ee120775;
+  border-radius: 25px;
+}
+
 ::ng-deep {
   .ng-container {
     width: auto;
